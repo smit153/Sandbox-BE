@@ -1,7 +1,7 @@
 import Dockerode from "dockerode";
 import { FileStructure } from "../types/types";
 
-const docker = new Dockerode();
+const docker = new Dockerode({ socketPath: '/var/run/docker.sock' });
 
 export async function buildAndRunContainer(
   directory: string,
