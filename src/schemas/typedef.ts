@@ -49,6 +49,7 @@ type User {
     getUserSandbox(id: String!): UserSandboxResponse!
     getSandbox(id: String!): GetSandboxResponse
     getActivePort: [Int]
+    getOutput(port: Int): String
   }
 
   type Mutation {

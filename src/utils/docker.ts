@@ -1,7 +1,9 @@
+import path from "path";
 import Dockerode from "dockerode";
 import { FileStructure } from "../types/types";
+import {writeLogFile} from "./files";
 
-const docker = new Dockerode({ socketPath: '/var/run/docker.sock' });
+const docker = new Dockerode();
 
 export async function buildAndRunContainer(
   directory: string,
@@ -91,6 +93,15 @@ export async function buildAndRunContainer(
             const output = chunk.toString("utf-8");
 
             console.log(`[${h}:${m}:${s}] `, output.trim());
+            const directory = path.join(
+              __dirname,
+              "../../",
+              "code",
+              port.toString(),
+              "root",
+              "output.txt"
+            );
+            writeLogFile(directory, `[${h}:${m}:${s}] ${output.trim()}`)
           });
         }
       );

@@ -9,6 +9,7 @@ import {
   deleteFile,
   cleanUp,
   getActivePorts,
+  getOutputLog
 } from "../utils/files";
 import {
   FRONTEND_BOILERPLATE,
@@ -234,6 +235,11 @@ const getActivePort = async () => {
   return ports;
 };
 
+const getOutput=async(_parent: unknown, { port }: { port: number })=>{
+  const output=await getOutputLog(port)
+  return output;
+}
+
 export {
   getUserSandbox,
   createSandbox,
@@ -243,4 +249,5 @@ export {
   deleteSandboxFile,
   cleanUpSandbox,
   getActivePort,
+  getOutput
 };

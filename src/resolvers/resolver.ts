@@ -8,6 +8,7 @@ import {
   deleteSandboxFile,
   cleanUpSandbox,
   getActivePort,
+  getOutput
 } from "../controllers/sandboxController";
 
 const resolvers = {
@@ -15,6 +16,7 @@ const resolvers = {
     getUserSandbox,
     getSandbox,
     getActivePort,
+    getOutput,
   },
   Mutation: {
     signup,
